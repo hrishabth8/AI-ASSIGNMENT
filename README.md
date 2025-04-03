@@ -1,57 +1,53 @@
-Cerebrum-7T nnU-Net Pipeline
-This repository provides an end-to-end pipeline for brain segmentation using nnU-Net (v2) on ultra-high field 7T MRI data, specifically using the Cerebrum-7T dataset. The pipeline covers installation, preprocessing, training, inference, visualization, and basic statistical analysis. It also includes modifications (e.g., patching blosc2.open) to ensure compatibility in the Google Colab environment.
+# Cerebrum-7T nnU-Net Pipeline
 
-Table of Contents
-Introduction
+This repository provides an end-to-end pipeline for brain segmentation using nnU-Net (v2) on ultra-high field 7T MRI data, specifically utilizing the Cerebrum-7T dataset. The pipeline encompasses installation, preprocessing, training, inference, visualization, and basic statistical analysis. It also includes modifications (e.g., patching `blosc2.open`) to ensure compatibility in the Google Colab environment.
 
-Installation
+## Table of Contents
 
-Dataset
+1. [Introduction](#introduction)
+2. [Installation](#installation)
+   - [Clone this Repository](#clone-this-repository)
+   - [Install Dependencies](#install-dependencies)
+   - [Google Drive Setup](#google-drive-setup)
+3. [Dataset](#dataset)
+   - [Dataset Source](#dataset-source)
+   - [Folder Structure](#folder-structure)
+4. [Environment Setup](#environment-setup)
+5. [Preprocessing](#preprocessing)
+6. [Training](#training)
+7. [Inference](#inference)
+8. [Visualization and Statistical Analysis](#visualization-and-statistical-analysis)
+   - [Load & Visualize a Predicted Segmentation](#load--visualize-a-predicted-segmentation)
+   - [Basic Statistical Analysis](#basic-statistical-analysis)
+9. [Modifications and Customizations](#modifications-and-customizations)
+   - [blosc2 Patch](#blosc2-patch)
+   - [Environment Variables](#environment-variables)
+   - [Dataset Loader](#dataset-loader)
+   - [Training and Inference](#training-and-inference)
+10. [Results](#results)
+11. [Troubleshooting](#troubleshooting)
+12. [Citation](#citation)
+13. [License](#license)
 
-Dataset Source
+## Introduction
 
-Folder Structure
-
-Environment Setup
-
-Preprocessing
-
-Training
-
-Inference
-
-Visualization and Statistical Analysis
-
-Modifications and Customizations
-
-Results
-
-Troubleshooting
-
-Citation
-
-License
-
-Introduction
 The Cerebrum-7T project leverages nnU-Net to provide a fully automated, self-configuring segmentation pipeline for 7T brain MRI data. This pipeline:
 
-Automatically extracts dataset fingerprints and creates customized training plans.
+- Automatically extracts dataset fingerprints and creates customized training plans.
+- Trains both 3D full-resolution and 2D models using cross-validation.
+- Supports inference and visualization of predicted segmentation masks.
+- Enables basic statistical analysis (e.g., calculating volumes of segmented brain regions).
 
-Trains both 3D full-resolution and 2D models using cross-validation.
+The pipeline is designed to run in Google Colab, with data stored on Google Drive. It includes modifications to ensure compatibility and memory efficiency.
 
-Supports inference and visualization of predicted segmentation masks.
+## Installation
 
-Enables basic statistical analysis (e.g., calculating volumes of segmented brain regions).
+### Clone this Repository
 
-The pipeline is designed to be run in Google Colab, where data is stored on Google Drive. It includes modifications to ensure compatibility and memory efficiency.
-
-Installation
-Clone this Repository (if applicable):
-
-bash
-Copy
+```bash
 git clone https://github.com/your_username/Cerebrum7T_nnUNet.git
 cd Cerebrum7T_nnUNet
+
 Install Dependencies:
 
 In your Colab notebook or local environment, install the required packages:
