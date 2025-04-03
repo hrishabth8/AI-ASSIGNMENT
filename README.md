@@ -54,12 +54,12 @@ In your Colab notebook or local environment, install the required packages:
 
 python
 Copy
-!pip install nnunetv2
+```!pip install nnunetv2
 !pip install monai
 !pip install nibabel
 !pip install blosc2
+```
 Google Drive Setup:
-
 Make sure your data and results folders are on your Google Drive. In Colab, mount Google Drive:
 
 python
