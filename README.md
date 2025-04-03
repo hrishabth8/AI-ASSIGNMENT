@@ -169,7 +169,7 @@ def run_inference(configuration):
 
 # Run inference using the 3D full resolution model
 run_inference("3d_fullres")
-
+```
 Visualization and Statistical Analysis
 Load & Visualize a Predicted Segmentation
 python
