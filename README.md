@@ -1,3 +1,5 @@
+# Note the documentation is only for the UUNET model the monai model is not documented in the readme file but the folder is present.
+
 # Cerebrum-7T nnU-Net Pipeline
 
 This repository provides an end-to-end pipeline for brain segmentation using nnU-Net (v2) on ultra-high field 7T MRI data, specifically utilizing the Cerebrum-7T dataset. The pipeline encompasses installation, preprocessing, training, inference, visualization, and basic statistical analysis. It also includes modifications (e.g., patching `blosc2.open`) to ensure compatibility in the Google Colab environment.
