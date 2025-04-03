@@ -202,7 +202,7 @@ if os.path.exists(ground_truth_file) and os.path.exists(predicted_file):
     print(f"Predicted volume for label {label}: {pred_volume} voxels")
 else:
     print("Ground truth or predicted file not found. Please verify the file paths.")
-    ```
+```
 # Modifications and Customizations
 blosc2 Patch:
 To work around issues with memory mapping in the Colab environment, the script patches blosc2.open to force mmap_mode=None.
