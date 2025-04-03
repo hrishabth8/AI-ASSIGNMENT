@@ -61,25 +61,23 @@ Copy
 ```
 Google Drive Setup:
 Make sure your data and results folders are on your Google Drive. In Colab, mount Google Drive:
-
 python
 Copy
+```
 from google.colab import drive
 drive.mount('/content/drive')
+```
+
 Dataset
 Dataset Source
 The dataset used in this pipeline is the Cerebrum-7T dataset, which is designed for brain segmentation from 7T MRI. The dataset contains:
-
 High-resolution T1-weighted MRI scans (obtained via MP2RAGE sequence).
-
 Multiple segmentation masks obtained using FreeSurfer and other tools.
-
 Data in BIDS format.
 
 Folder Structure
 The dataset should follow the nnU-Net raw folder structure. For example:
-
-bash
+```bash
 Copy
 nnUNet_raw/
 ├── Dataset123_Cerebrum7T/
@@ -94,13 +92,12 @@ nnUNet_preprocessed/
 │   ├── splits_final.json
 │   ├── nnUNetPlans.json
 │   └── ... (other preprocessed files)
+```
 Environment Setup
 Set the following environment variables to point to the appropriate folders on your Google Drive:
-
 python
 Copy
-import os
-
+```import os
 os.environ["nnUNet_raw_data_base"] = "/content/drive/MyDrive/nnUNet_raw_data"
 os.environ["nnUNet_preprocessed"] = "/content/drive/MyDrive/nnUNet_preprocessed"
 os.environ["RESULTS_FOLDER"] = "/content/drive/MyDrive/nnUNet_results"
@@ -113,11 +110,12 @@ os.environ["nnUNet_results"] = "/content/drive/MyDrive/nnUNet_results"
 os.makedirs(os.environ["nnUNet_raw_data_base"], exist_ok=True)
 os.makedirs(os.environ["nnUNet_preprocessed"], exist_ok=True)
 os.makedirs(os.environ["RESULTS_FOLDER"], exist_ok=True)
+```
 Preprocessing
 Run the following command in a Colab cell to plan and preprocess your dataset. This extracts dataset fingerprints and creates training plans automatically.
-
 python
 Copy
+```
 def plan_and_preprocess():
     command = f"nnUNetv2_plan_and_preprocess -d 123 --verify_dataset_integrity -np 3"
     print("Running experiment planning and preprocessing:")
@@ -132,11 +130,13 @@ def plan_and_preprocess():
 
 # Run the preprocessing function
 plan_and_preprocess()
+```
+
 Training
 The pipeline trains both 3D full-resolution and 2D models across 5 cross-validation folds. An example training cell is:
-
 python
 Copy
+```
 def train_model(configuration, fold):
     command = f"nnUNetv2_train {DATASET_NAME} {configuration} {fold} --npz"
     print(f"Training {configuration} model on fold {fold} with command:")
@@ -147,13 +147,14 @@ def train_model(configuration, fold):
 for fold in range(5):
     train_model("3d_fullres", fold)
     train_model("2d", fold)
+```
 Make sure to adjust the device settings if training on CPU/GPU.
 
 Inference
 After training, run inference on the test dataset using the trained model:
-
 python
 Copy
+```
 def run_inference(configuration):
     command = (
         f"nnUNetv2_predict -i {TEST_IMAGES_FOLDER} -o {OUTPUT_PREDICTIONS_FOLDER} "
