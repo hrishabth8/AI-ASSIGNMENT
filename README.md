@@ -167,10 +167,12 @@ def run_inference(configuration):
 
 # Run inference using the 3D full resolution model
 run_inference("3d_fullres")
+
 Visualization and Statistical Analysis
 Load & Visualize a Predicted Segmentation
 python
 Copy
+```
 # Cell 7: Load & Visualize a Predicted Segmentation
 predicted_file = os.path.join(OUTPUT_PREDICTIONS_FOLDER, "sub-001_0000.nii.gz")  # Adjust filename as needed
 if os.path.exists(predicted_file):
@@ -181,7 +183,10 @@ else:
 Basic Statistical Analysis
 python
 Copy
+```
+
 # Cell 8: Basic Statistical Analysis Example
+```
 ground_truth_file = os.path.join(os.environ["nnUNet_raw_data_base"], "Dataset123_Cerebrum7T", "labelsTr", "sub-001.nii.gz")
 predicted_file = os.path.join(OUTPUT_PREDICTIONS_FOLDER, "sub-001_0000.nii.gz")  # Adjust as needed
 
@@ -195,7 +200,8 @@ if os.path.exists(ground_truth_file) and os.path.exists(predicted_file):
     print(f"Predicted volume for label {label}: {pred_volume} voxels")
 else:
     print("Ground truth or predicted file not found. Please verify the file paths.")
-Modifications and Customizations
+    ```
+# Modifications and Customizations
 blosc2 Patch:
 To work around issues with memory mapping in the Colab environment, the script patches blosc2.open to force mmap_mode=None.
 
@@ -208,20 +214,15 @@ Custom PreprocessedNnunetDataset and SliceDataset classes are provided to load y
 Training and Inference:
 Standard nnU-Net commands are used for training and inference, while the MONAI example (provided in separate cells) demonstrates how to switch to an alternative architecture if lower memory consumption is desired.
 
-Results
+# Results
 After training and inference, you should observe:
-
 Preprocessed dataset fingerprints and training plans saved in the nnUNet_preprocessed folder.
-
 Training logs indicating progress across folds.
-
 Inference outputs (e.g., segmentation masks in NIfTI format) saved in the OUTPUT_PREDICTIONS_FOLDER.
-
 Visualization of predicted segmentation overlays and basic statistical metrics (e.g., region volumes) printed in the notebook.
-
 Example results (for visualization and volume computation) will be displayed in the notebook cells.
 
-Troubleshooting
+# Troubleshooting
 Killed Process / OOM:
 If your process is killed due to insufficient memory, try reducing the number of data augmentation workers or use a GPU if available.
 
@@ -231,11 +232,11 @@ Ensure that all environment variables and paths are correctly set and that your 
 Blosc2 Reshaping Errors:
 If reshaping fails, verify the actual data shape stored in your blosc2 files and adjust the target shape in the loader accordingly.
 
-Citation
+# Citation
 If you use this pipeline or nnU-Net in your research, please cite:
 
 Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature Methods, 18(2), 203–211.
 
-License
+# License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
