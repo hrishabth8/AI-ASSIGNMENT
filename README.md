@@ -1,4 +1,4 @@
-##### Note: the documentation is only for the UUNET model the monai model is not documented in the readme file but the folder is present.
+##### Note: the documentation is only for the NNUNET model the monai model is not documented in the readme file but the folder is present.
 
 # Cerebrum-7T nnU-Net Pipeline
 
