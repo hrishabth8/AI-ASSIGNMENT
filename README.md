@@ -47,7 +47,7 @@ The pipeline is designed to run in Google Colab, with data stored on Google Driv
 ```bash
 git clone https://github.com/your_username/Cerebrum7T_nnUNet.git
 cd Cerebrum7T_nnUNet
-
+```
 Install Dependencies:
 
 In your Colab notebook or local environment, install the required packages:
